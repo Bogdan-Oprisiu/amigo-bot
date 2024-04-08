@@ -12,10 +12,9 @@ if not api_key:
 
 def get_chat_response(client, user_input):
     try:
-        # Construct the prompt message to reflect a friendly and cheerful tone
         prompt_messages = [
             {"role": "user", "content": user_input},
-            {"role": "assistant", "content": "Hey there! It's your best buddy Amigo. "}
+            {"role": "system", "content": "Hey there! It's your best buddy Amigo. "}
         ]
 
         # Create completion
@@ -51,15 +50,15 @@ def main():
 
     while True:
         user_input = input("You: ")
-
         if user_input.lower() == 'goodbye':
             print("Goodbye! May the force be with you!")
             break
 
-        response = get_chat_response(client, user_input)
+        else:
+            response = get_chat_response(client, user_input)
 
-        if response:
-            print("Amigo: " + response)
+            if response:
+                print("Amigo: " + response)
 
 
 if __name__ == "__main__":
