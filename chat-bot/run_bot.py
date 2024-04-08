@@ -12,16 +12,18 @@ if not api_key:
 
 def get_chat_response(client, user_input):
     try:
-        # Construct the prompt message to always reflect a friendly and cheerful tone
+        # Construct the prompt message to reflect a friendly and cheerful tone
         prompt_messages = [
             {"role": "user", "content": user_input},
-            {"role": "assistant", "content": "Hey there! I'm your friendly and cheerful companion. "}
+            {"role": "assistant", "content": "Hey there! It's your best buddy Amigo. "}
         ]
 
         # Create completion
         completion = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=prompt_messages,
+            max_tokens=100,  # Adjust max_tokens to control response length
+            temperature=0.7,  # Adjust temperature for creativity in responses
         )
 
         return completion.choices[0].message.content
@@ -45,12 +47,12 @@ def main():
 
     print(
         "Welcome to the Amigo bot! I'm your friendly and cheerful companion."
-        " Let's chat about anything! Type 'exit' to end the conversation.")
+        " Let's chat about anything! Type 'Goodbye' to end the conversation.")
 
     while True:
         user_input = input("You: ")
 
-        if user_input.lower() == 'exit':
+        if user_input.lower() == 'goodbye':
             print("Goodbye! May the force be with you!")
             break
 
