@@ -16,7 +16,7 @@ api_key = os.getenv('OPEN_AI_API_KEY')
 # Check if the API key is empty or not found
 if not api_key:
     print("Error: API key not found in environment variables.")
-    exit()  # Exit the script if API key is not found
+    exit()
 
 # Instantiate the OpenAI client
 client = openai.OpenAI(api_key=api_key)
